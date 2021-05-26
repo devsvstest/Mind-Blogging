@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <button type="submit" name="confirm" value="Confirm">Confirm</button>
+    <button type="submit" value=object.pk >Cancel</button>
+  </form>
+{% endblock %}

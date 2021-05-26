@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="">
+    <h1>{{ post.title }}</h1>
+    {% if post.published_date %}
+      <p>{{ post.published_date }}</p>
+    {% endif %}
+  </div>
+
+  {%  if user.is_authenticated %}
+  <div class="">
+    <button type="button" ><a href="{% url 'blogs:comment_form' pk=post.pk %}">Comment</a></button>
+    <button type="button" ><a href="{% url 'blogs:post_delete' pk=post.pk %}">Delete Post</a></button>
+    {% if not post.published_date %}
+      <button type="button"><a href="{% url 'blogs:post_publish' pk=post.pk %}">Publish</a></button>
+    {% endif %}
+  </div>
+  {% endif %}
+
+
+  <div class="">
+      <p>{{ post.text|safe|linebreaksbr }}</p>
+  </div>
+
+
+  <div class="">
+      {% for comment in post.comments.all %}
+        <div class="">
+          <div class="">
+            <h3>{{ comment.author }}</h3>
+            <h6>{{ comment.created_date }}</h6>
+          </div>
+          <p>{{ comment.text|safe|linebreaksbr }}</p>
+        </div>
+      {%empty%}
+          <p>"No comments posted !! "</p>
+      {% endfor %}
+  </div>
+{% endblock %}

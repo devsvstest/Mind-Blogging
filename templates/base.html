@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Mind Blogging </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    {# Custom CSS#}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+  </head>
+  <body class = "loader">
+    <nav class="navbar navbar-default navbar_padding">
+      <div class="container">
+        <ul class = "nav nav-tabs navbar_display">
+          <li> <a class = "navbar-brand big_brand navbar_elements" href="{% url 'blogs:post_list'%}"> Mind Blogging </a> </li>
+          <li> <a class = "navbar_elements" href="{% url 'blogs:about' %}"> About </a> </li>
+          <li> <a class = "navbar_elements" href="https://www.github.com"> Github </a> </li>
+          <li> <a class = "navbar_elements" href="https://www.linkedin.com"> LinkedIn </a> </li>
+        </ul>
+
+        <ul class = "nav nav-tabs navbar-right navbar_display">
+          {% if user.is_authenticated %}
+            <li> <a class = "navbar_elements navbar_elements_right" href="{% url 'blogs:post_form' %}"> Create New Post </a> </li>
+            <li> <a class = "navbar_elements navbar_elements_right" href="{% url 'accounts:logout' %}"> Logout </a> </li>
+          {% else %}
+            <li> <a class="nav navbar-right navbar_elements navbar_elements_right" href="{% url 'accounts:login_url' %}"> Login </a> </li>
+            <li> <a class="nav navbar-right navbar_elements navbar_elements_right" href="{% url 'accounts:signup' %}"> SignUp </a> </li>
+          {% endif %}
+        </ul>
+
+      </div>
+
+    </nav>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="blog_posts">
+                    {% block content %}
+                    {% endblock %}
+                  </div>
+                </div>
+            </div>
+        </div>
+        {#SCRIPTS#}
+  </body>
+</html>

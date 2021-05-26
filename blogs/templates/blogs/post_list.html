@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for post in post_list %}
+      <div class="">
+        <h3><a href=" {% url 'blogs:post_detail' pk=post.pk %} ">{{ post.title }}</a></h3>
+        <p class = "text_max_len" >{{ post.text }}</p>
+      </div>
+    {% endfor %}
+
+{% endblock %}

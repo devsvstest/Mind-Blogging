@@ -1,0 +1,47 @@
+/*.text_max_len{
+    max-width: 160ch;
+    overflow:hidden;
+    border:1px;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}*/
+
+.text_max_len{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+body{
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.navbar_elements{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  font-size: 30px;
+}
+
+.navbar_elements_right{
+  font-size: 15px;
+}
+
+.navbar_padding{
+  padding-bottom: 50px;
+}
+
+.big_brand{
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  font-size: 50px;
+}
+
+.container {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
